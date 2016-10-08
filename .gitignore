@@ -250,3 +250,6 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/A2-WebApp/wwwroot/node-modules
+/A2-WebApp/wwwroot/package.json
+/A2-WebApp/wwwroot/node_modules
