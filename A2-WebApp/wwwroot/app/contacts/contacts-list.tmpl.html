@@ -1,0 +1,29 @@
+<panel-box title="Contacts List" [showClose]="false" [showCollapse]="false">
+	<span class="panel-tools">
+		<panel-box-btn (btnClick)="getContacts()" icon="fa-refresh"></panel-box-btn>
+	</span>
+	<span class="panel-content">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Last Name</th>
+					<th>First Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let c of contacts">
+					<td>
+						<a [routerLink]="['/contacts', c.contactID]">{{ c.contactID }}</a>
+					</td>
+					<td>
+						{{ c.lastName }}
+					</td>
+					<td>
+						{{ c.firstName }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</span>
+</panel-box>

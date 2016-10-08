@@ -1,0 +1,14 @@
+<div class="col-sm-6">
+	<panel-box title="ערוך: {{ id }}" [showClose]="false" [showCollapse]="false">
+		<span class="panel-tools">
+			<panel-box-btn (btnClick)="save()" icon="fa-save"></panel-box-btn>
+		</span>
+		<span class="panel-content">
+            <div *ngIf="contact">
+				<input [(ngModel)]=" contact.contactID " />
+				<input [(ngModel)]=" contact.lastName " />
+				<input [(ngModel)]=" contact.firstName " />
+			</div>
+    	</span>
+	</panel-box>
+</div>

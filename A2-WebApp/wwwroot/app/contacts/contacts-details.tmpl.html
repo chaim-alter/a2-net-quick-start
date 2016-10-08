@@ -1,0 +1,16 @@
+﻿<div class="col-sm-6">
+    <panel-box title="פרטי איש: {{ id }}" [showClose]="false" [showCollapse]="false">
+        <span class="panel-tools">
+		<a [routerLink]="['/contacts/edit', id]">
+            <i class="fa fa-pencil" ></i>
+        </a>
+	</span>
+        <span class="panel-content">
+            <div *ngIf="contact">
+                <label>{{ contact.contactID }}</label>
+                <label>{{ contact.lastName }}</label>
+                <label>{{ contact.firstName }}</label>
+            </div>
+    	</span>
+    </panel-box>
+</div>
