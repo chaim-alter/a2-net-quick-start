@@ -12,8 +12,9 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var contacts_data_1 = require('./contacts.data');
 var ContactsEdit = (function () {
-    function ContactsEdit(route, contactsData) {
-        this.route = route;
+    function ContactsEdit(router, activatedRoute, contactsData) {
+        this.router = router;
+        this.activatedRoute = activatedRoute;
         this.contactsData = contactsData;
     }
     ContactsEdit.prototype.load = function () {
@@ -22,13 +23,16 @@ var ContactsEdit = (function () {
             .subscribe(function (c) { return _this.contact = c; });
     };
     ContactsEdit.prototype.save = function () {
+        var _this = this;
         this.contactsData.update(this.contact)
-            .then()
+            .then(function (b) {
+            return _this.router.navigate([("../../" + _this.contact.contactID)], { relativeTo: _this.activatedRoute });
+        })
             .catch();
     };
     ContactsEdit.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.params.forEach(function (params) {
+        this.activatedRoute.params.forEach(function (params) {
             _this.id = +params['id'];
             _this.load();
         });
@@ -39,7 +43,7 @@ var ContactsEdit = (function () {
             selector: 'contacts-edit',
             templateUrl: 'contacts-edit.tmpl.html'
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, contacts_data_1.ContactsData])
+        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, contacts_data_1.ContactsData])
     ], ContactsEdit);
     return ContactsEdit;
 }());

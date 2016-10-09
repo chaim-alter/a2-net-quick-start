@@ -26,7 +26,6 @@ export class ContactsData {
 	}
 
     update(contact: Contact): Promise<boolean> {
-        console.log('save clicked!', contact);
         return this.http.put(`${this.url}/${contact.contactID}`, contact)
             .toPromise()
 			.then(c => true)

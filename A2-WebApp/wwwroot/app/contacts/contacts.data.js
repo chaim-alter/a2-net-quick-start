@@ -28,7 +28,6 @@ var ContactsData = (function () {
             .catch(this.handleError);
     };
     ContactsData.prototype.update = function (contact) {
-        console.log('save clicked!', contact);
         return this.http.put(this.url + "/" + contact.contactID, contact)
             .toPromise()
             .then(function (c) { return true; })

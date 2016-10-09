@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ContactsData } from './contacts.data';
 import { Contact } from './contact';
@@ -12,7 +12,8 @@ import { Contact } from './contact';
 
 export class ContactsEdit implements OnInit {
     constructor(
-        private route: ActivatedRoute,
+        private router: Router,
+        private activatedRoute: ActivatedRoute,
         private contactsData: ContactsData
         ) {
     }
@@ -27,12 +28,15 @@ export class ContactsEdit implements OnInit {
 
     public save(): void {
         this.contactsData.update(this.contact)
-            .then()
+            .then(b =>
+                this.router.navigate([`../../${this.contact.contactID}`], {relativeTo: this.activatedRoute})
+
+            )
             .catch();
     }
 
     ngOnInit() {
-		this.route.params.forEach((params: Params) => {
+		this.activatedRoute.params.forEach((params: Params) => {
     		this.id = +params['id'];
 			this.load();
 		});
